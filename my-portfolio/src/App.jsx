@@ -11,7 +11,9 @@ import {
   FaEnvelope,
   FaWhatsapp,
   FaInstagram,
-  FaFacebookF
+  FaFacebookF,
+  FaGlobe,
+  FaBuilding
 } from 'react-icons/fa';
 import { useEffect } from 'react';
 
@@ -149,6 +151,38 @@ function App() {
                 className="demo-link"
               >
                 Visit Our Demo Shop
+              </a>
+            </p>
+          </div>
+
+
+          
+          <div className="stat-card reveal">
+            <div className="icon-wrap"><FaGlobe className="icon" /></div>
+            <h2>Political Campaign Website</h2>
+            <p>
+              <a
+                href="https://official-aisha.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="demo-link"
+              >
+                Visit Aisha Jumwa's Campaign Site
+              </a>
+            </p>
+          </div>
+
+                    <div className="stat-card reveal">
+            <div className="icon-wrap"><FaBuilding className="icon" /></div>
+            <h2>Political Campaign Website</h2>
+            <p>
+              <a
+                href="https://geen-m5rj.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="demo-link"
+              >
+                Global Economic Empowerment Company's Website
               </a>
             </p>
           </div>
