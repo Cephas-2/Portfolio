@@ -2,6 +2,7 @@ import './index.css';
 import profilePic from './assets/profile.jpg';
 import logo from './assets/logo.png';
 import code from './assets/code.png';
+import servicesPDF from './assets/Cephas-Tech-Services.pdf';
 import {
   FaHotel,
   FaChurch,
@@ -16,23 +17,19 @@ import {
   FaBuilding,
   FaDownload
 } from 'react-icons/fa';
-import { useEffect, useRef } from 'react';
-import html2pdf from 'html2pdf.js';
+import { useEffect } from 'react';
 
 function App() {
-  const contentRef = useRef(null);
 
   const downloadPDF = () => {
-    const element = contentRef.current;
-    const opt = {
-      margin: 10,
-      filename: 'Cephas-Peter-Portfolio.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
-
-    html2pdf().set(opt).from(element).save();
+    // Create a temporary link element to download the PDF
+    const link = document.createElement('a');
+    link.href = servicesPDF;
+    link.target = '_blank';
+    link.download = 'CEPHAS-TECH-Services.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   useEffect(() => {
@@ -68,13 +65,8 @@ function App() {
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><button onClick={downloadPDF} className="download-btn">
-            <FaDownload /> Download PDF
-          </button></li>
         </ul>
       </nav>
-
-      <div ref={contentRef}>
 
       {/* === About Section === */}
       <section id="about" className="about-section reveal">
@@ -117,8 +109,6 @@ function App() {
           </div>
 
         </div>
-
-
 
         {/* === Projects Section === */}
         <h1
@@ -217,6 +207,17 @@ function App() {
   </blockquote>
 </section>
 
+      {/* === Download Section === */}
+      <section className="download-section reveal">
+        <div className="download-container">
+          <h3 className="gradient-text">Download Services & Pricing</h3>
+          <p>Get our complete services guide with detailed pricing information</p>
+          <button onClick={downloadPDF} className="download-btn-large">
+            <FaDownload /> Download Services PDF
+          </button>
+        </div>
+      </section>
+
       {/* === Footer === */}
       <footer className="footer reveal" id="contact">
         <div className="footer-line"></div>
@@ -246,7 +247,6 @@ function App() {
 
         </div>
       </footer>
-      </div>
     </div>
   );
 }
