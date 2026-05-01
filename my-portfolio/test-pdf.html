@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Download Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+        }
+        .download-btn {
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        h1 {
+            background: linear-gradient(90deg, #8b5cf6, #06b6d4, #facc15);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="downloadPDF()" class="download-btn">
+        ⬇ Download PDF
+    </button>
+    
+    <div id="content" class="content">
+        <h1>Cephas Peter - Portfolio</h1>
+        <h2>Hello I'm Cephas Peter,</h2>
+        <p>A passionate web developer with a love for creating clean, responsive, and user-friendly web applications.</p>
+        
+        <h3>Skills</h3>
+        <ul>
+            <li>React, JavaScript, TypeScript</li>
+            <li>HTML, CSS, Tailwind CSS</li>
+            <li>Python, Flask, Django</li>
+            <li>MySQL, SQLite, PostgreSQL</li>
+        </ul>
+        
+        <h3>Projects</h3>
+        <ul>
+            <li>Hotel Demo Website</li>
+            <li>Church Website</li>
+            <li>Online Demo Shop</li>
+            <li>Political Campaign Websites</li>
+        </ul>
+        
+        <h3>Contact</h3>
+        <p>Email: petermwangome10@gmail.com</p>
+        <p>Phone: +254 727 003 182</p>
+    </div>
+
+    <script>
+        function downloadPDF() {
+            const element = document.getElementById('content');
+            const opt = {
+                margin: 10,
+                filename: 'Cephas-Peter-Portfolio.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>

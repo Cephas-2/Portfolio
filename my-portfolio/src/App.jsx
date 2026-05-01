@@ -13,11 +13,27 @@ import {
   FaInstagram,
   FaFacebookF,
   FaGlobe,
-  FaBuilding
+  FaBuilding,
+  FaDownload
 } from 'react-icons/fa';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import html2pdf from 'html2pdf.js';
 
 function App() {
+  const contentRef = useRef(null);
+
+  const downloadPDF = () => {
+    const element = contentRef.current;
+    const opt = {
+      margin: 10,
+      filename: 'Cephas-Peter-Portfolio.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save();
+  };
 
   useEffect(() => {
     const reveals = document.querySelectorAll('.reveal');
@@ -52,8 +68,13 @@ function App() {
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><button onClick={downloadPDF} className="download-btn">
+            <FaDownload /> Download PDF
+          </button></li>
         </ul>
       </nav>
+
+      <div ref={contentRef}>
 
       {/* === About Section === */}
       <section id="about" className="about-section reveal">
@@ -225,6 +246,7 @@ function App() {
 
         </div>
       </footer>
+      </div>
     </div>
   );
 }

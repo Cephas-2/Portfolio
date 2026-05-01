@@ -210,6 +210,28 @@ h1, h2, h3 {
   color: #0decec;
 }
 
+.download-btn {
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+  background: linear-gradient(135deg, #a279f0, #08c7e3);
+}
+
 /* === Icons === */
 .icon-wrap {
   display: flex;
